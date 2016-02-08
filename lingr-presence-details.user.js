@@ -10,7 +10,15 @@
 (function() {
     RosterView.prototype.oldLingrPresenceDetailsChangePresence = RosterView.prototype.changePresence;
     RosterView.prototype.changePresence = function(event) {
-        event.text = '<img src="' + event.presence.icon_url + '" alt="' + event.presence.nickname + '" width="16" height="16" />' + event.text;
+        var timestamp = new Date(event.presence.timestamp);
+        var dateString = 
+            timestamp.getFullYear().toString() + '-' +
+            ('0' + (timestamp.getMonth() + 1)).slice(-2) + '-' +
+            ('0' + timestamp.getDate()).slice(-2) + ' ' +
+            ('0' + timestamp.getHours()).slice(-2) + ':' +
+            ('0' + timestamp.getMinutes()).slice(-2) + ':' +
+            ('0' + timestamp.getSeconds()).slice(-2);
+        event.text = dateString + ': <img src="' + event.presence.icon_url + '" alt="' + event.presence.nickname + '" width="16" height="16" />' + event.text;
         return RosterView.prototype.oldLingrPresenceDetailsChangePresence.call(this, event);
     }
     Message.prototype.oldLingrPresenceDetailsInitialize = Message.prototype.initialize;
