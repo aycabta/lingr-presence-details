@@ -8,4 +8,3 @@ Lingr Presence Details
 ![icon](chat-people.png)
 
 ICON!!!!!!!!!!!!!
-
